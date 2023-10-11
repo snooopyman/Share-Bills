@@ -1,4 +1,4 @@
 # Share-Bills
 
-An iOS application that simplifies the management of shared expenses among friends. Record, split, and efficiently track expenses. 
-No more confusion about who owes whom.
+This iOS app allows you to efficiently manage and share expenses with friends, housemates, or groups. 
+It simplifies the management of shared finances and provides a clear view of who owes whom.
