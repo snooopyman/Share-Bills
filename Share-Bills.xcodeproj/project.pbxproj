@@ -14,10 +14,10 @@
 		2A9510932AD6E41D00EBBA5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A9510912AD6E41D00EBBA5C /* LaunchScreen.storyboard */; };
 		2A95109E2AD83E5F00EBBA5C /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A95109D2AD83E5F00EBBA5C /* WelcomeView.swift */; };
 		2A9510A32AD849E300EBBA5C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A9510A22AD849E300EBBA5C /* Localizable.strings */; };
-		2A9510A92AD84E5100EBBA5C /* Colours.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A9510A82AD84E5100EBBA5C /* Colours.xcassets */; };
 		2A9510AB2AD8521300EBBA5C /* UIIMage+AppImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9510AA2AD8521300EBBA5C /* UIIMage+AppImages.swift */; };
-		2A9510B02AD85CC500EBBA5C /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9510AF2AD85CC500EBBA5C /* UIColor+AppColors.swift */; };
 		2A9510D22AD86A9E00EBBA5C /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9510D12AD86A9E00EBBA5C /* CustomButton.swift */; };
+		2A9510D62AD92AD600EBBA5C /* Colours.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A9510D52AD92AD600EBBA5C /* Colours.xcassets */; };
+		2A9510D82AD92B0A00EBBA5C /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9510D72AD92B0A00EBBA5C /* UIColor+AppColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,10 +30,10 @@
 		2A9510942AD6E41D00EBBA5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A95109D2AD83E5F00EBBA5C /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		2A9510A22AD849E300EBBA5C /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		2A9510A82AD84E5100EBBA5C /* Colours.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colours.xcassets; sourceTree = "<group>"; };
 		2A9510AA2AD8521300EBBA5C /* UIIMage+AppImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIIMage+AppImages.swift"; sourceTree = "<group>"; };
-		2A9510AF2AD85CC500EBBA5C /* UIColor+AppColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
 		2A9510D12AD86A9E00EBBA5C /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		2A9510D52AD92AD600EBBA5C /* Colours.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colours.xcassets; sourceTree = "<group>"; };
+		2A9510D72AD92B0A00EBBA5C /* UIColor+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +106,8 @@
 		2A9510A02AD8499600EBBA5C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2A9510D52AD92AD600EBBA5C /* Colours.xcassets */,
+				2A95108F2AD6E41D00EBBA5C /* Assets.xcassets */,
 				2A9510A12AD849A500EBBA5C /* Localization */,
 			);
 			path = Resources;
@@ -132,7 +134,6 @@
 		2A9510A52AD84CD100EBBA5C /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				2A95108F2AD6E41D00EBBA5C /* Assets.xcassets */,
 				2A9510AA2AD8521300EBBA5C /* UIIMage+AppImages.swift */,
 			);
 			path = Images;
@@ -141,8 +142,7 @@
 		2A9510A62AD84CD500EBBA5C /* Colours */ = {
 			isa = PBXGroup;
 			children = (
-				2A9510AF2AD85CC500EBBA5C /* UIColor+AppColors.swift */,
-				2A9510A82AD84E5100EBBA5C /* Colours.xcassets */,
+				2A9510D72AD92B0A00EBBA5C /* UIColor+AppColors.swift */,
 			);
 			path = Colours;
 			sourceTree = "<group>";
@@ -228,10 +228,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A9510D62AD92AD600EBBA5C /* Colours.xcassets in Resources */,
 				2A9510932AD6E41D00EBBA5C /* LaunchScreen.storyboard in Resources */,
 				2A9510A32AD849E300EBBA5C /* Localizable.strings in Resources */,
 				2A9510902AD6E41D00EBBA5C /* Assets.xcassets in Resources */,
-				2A9510A92AD84E5100EBBA5C /* Colours.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,10 +245,10 @@
 				2A9510D22AD86A9E00EBBA5C /* CustomButton.swift in Sources */,
 				2A95108B2AD6E41B00EBBA5C /* WelcomeViewController.swift in Sources */,
 				2A9510872AD6E41B00EBBA5C /* AppDelegate.swift in Sources */,
+				2A9510D82AD92B0A00EBBA5C /* UIColor+AppColors.swift in Sources */,
 				2A9510892AD6E41B00EBBA5C /* SceneDelegate.swift in Sources */,
 				2A9510AB2AD8521300EBBA5C /* UIIMage+AppImages.swift in Sources */,
 				2A95109E2AD83E5F00EBBA5C /* WelcomeView.swift in Sources */,
-				2A9510B02AD85CC500EBBA5C /* UIColor+AppColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
