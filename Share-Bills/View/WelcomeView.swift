@@ -34,7 +34,7 @@ final class WelcomeView: UIView {
             backgroundColor: .clear,
             title: "Register", 
             font: UIFont(name: "SF Pro", size: 20),
-            titleColor: UIColor(named: "adjBlueGray"),
+            titleColor: UIColor.adjBlueGray,
             borderWidth: 1,
             action: UIAction(handler: { [weak self] _ in
                 self?.showRegister()
