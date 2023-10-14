@@ -18,17 +18,17 @@ class CustomButton: UIButton {
         configure()
     }
 
-    public convenience init(backgroundColor: UIColor?, title: String, font: UIFont?, titleColor: UIColor?, borderWidth: CGFloat? = nil, cornerRadious: CGFloat? = nil, action: UIAction) {
+    public convenience init(title: String, font: UIFont?, titleColor: UIColor?,backgroundColor: UIColor?, borderWidth: CGFloat? = nil, cornerRadious: CGFloat? = nil, action: UIAction) {
         self.init(type: .system)
-        self.backgroundColor = backgroundColor ?? .clear
         self.setTitle(title, for: .normal)
         self.titleLabel?.font = font
         self.setTitleColor(titleColor, for: .normal)
+        self.backgroundColor = backgroundColor ?? .clear
         if let borderWidth = borderWidth, borderWidth > 0 {
             self.layer.borderWidth = borderWidth
         }
-        if let cornerRadious = cornerRadious, cornerRadious > 0 {
-            self.layer.cornerRadius = cornerRadious
+        if let cornerRadius = cornerRadious, cornerRadius > 0 {
+            self.layer.cornerRadius = cornerRadius
         }
         self.addAction(action, for: .touchUpInside)
     }

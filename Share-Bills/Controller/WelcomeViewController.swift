@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WelcomeViewController: UIViewController, WelcomeViewDelegate {
+class WelcomeViewController: UIViewController, NavigationDelegate {
 
     override func loadView() {
         let welcomeView = WelcomeView()
@@ -15,16 +15,9 @@ class WelcomeViewController: UIViewController, WelcomeViewDelegate {
         self.view = welcomeView
     }
 
-    func goToLoginVC() {
-        nextScreen(vc: LoginViewController())
-    }
-
-    func goToRegister() {
-        nextScreen(vc: LoginViewController())
-    }
-
-    private func nextScreen(vc: UIViewController) {
+    func navigateTo(_ vc: UIViewController) {
         navigationController?.pushViewController(vc, animated: true)
     }
+
 }
 
