@@ -1,5 +1,5 @@
 //
-//  Button.swift
+//  CustomButton.swift
 //  Share-Bills
 //
 //  Created by Jesús Armando Cáceres Vilchez on 12/10/23.
@@ -17,13 +17,14 @@ class CustomButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public convenience init(backgroundColor: UIColor?, title: String, font: UIFont?, titleColor: UIColor?, borderWidth: Int, action: UIAction) {
-        self.init(frame: .zero)
+    public convenience init(backgroundColor: UIColor?, title: String, font: UIFont?, titleColor: UIColor?, borderWidth: CGFloat, cornerRadious: CGFloat, action: UIAction) {
+        self.init(type: .system)
         self.backgroundColor = backgroundColor ?? .clear
         self.setTitle(title, for: .normal)
         self.titleLabel?.font = font
         self.setTitleColor(titleColor, for: .normal)
-        self.layer.borderWidth = 1
+        self.layer.borderWidth = borderWidth
+        self.layer.cornerRadius = cornerRadious
         self.addAction(action, for: .touchUpInside)
     }
 

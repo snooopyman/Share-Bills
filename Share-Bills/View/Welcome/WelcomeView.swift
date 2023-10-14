@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol WelcomeViewDelegate: AnyObject {
+    func goToLoginVC()
+    func goToRegister()
+}
+
 final class WelcomeView: UIView {
+
+    weak var delegate: WelcomeViewDelegate?
 
     private lazy var logoApp: UIImageView = {
         let logoApp = UIImageView()
@@ -18,11 +25,12 @@ final class WelcomeView: UIView {
 
     private lazy var loginButton: CustomButton = {
         let button = CustomButton(
-            backgroundColor: .clear,
-            title: "Login", 
-            font: UIFont(name: "SF Pro", size: 20),
-            titleColor: UIColor(named: "adjBlueGray"),
-            borderWidth: 1,
+            backgroundColor:  UIColor.adjSecondary,
+            title: "Login",
+            font: UIFont.boldSystemFont(ofSize: 20),
+            titleColor: UIColor.adjSecondaryText,
+            borderWidth: 0,
+            cornerRadious: 7,
             action: UIAction(handler: { [weak self] _ in
                 self?.showLogin()
             }))
@@ -31,11 +39,12 @@ final class WelcomeView: UIView {
 
     private lazy var registerButton: CustomButton = {
         let button = CustomButton(
-            backgroundColor: .clear,
-            title: "Register", 
-            font: UIFont(name: "SF Pro", size: 20),
-            titleColor: UIColor.adjBlueGray,
-            borderWidth: 1,
+            backgroundColor: UIColor.adjSecondary,
+            title: "Register",
+            font: UIFont.boldSystemFont(ofSize: 20),
+            titleColor: UIColor.adjSecondaryText,
+            borderWidth: 0,
+            cornerRadious: 7,
             action: UIAction(handler: { [weak self] _ in
                 self?.showRegister()
             }))
@@ -45,15 +54,16 @@ final class WelcomeView: UIView {
     private lazy var buttonStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [loginButton, registerButton])
         stackView.axis = .vertical
-        stackView.spacing = 30
-        stackView.alignment = .center
+        stackView.spacing = 25
+        stackView.alignment = .fill
+        stackView.distribution = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        backgroundColor = UIColor(named: "adjGrayBlue")
+        backgroundColor = UIColor.adjWhiteBlack
         setup()
     }
 
@@ -77,21 +87,22 @@ final class WelcomeView: UIView {
             logoApp.heightAnchor.constraint(equalToConstant: 300),
             logoApp.centerXAnchor.constraint(equalTo: centerXAnchor),
             logoApp.topAnchor.constraint(equalTo: topAnchor, constant: 150),
-            buttonStackView.widthAnchor.constraint(equalToConstant: 300),
-            buttonStackView.heightAnchor.constraint(equalToConstant: 100),
-            buttonStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            buttonStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 28),
-            buttonStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -28),
-            buttonStackView.topAnchor.constraint(equalTo: logoApp.bottomAnchor, constant: 80)
+
+            loginButton.heightAnchor.constraint(equalToConstant: 70),
+            registerButton.heightAnchor.constraint(equalToConstant: 70),
+
+            buttonStackView.topAnchor.constraint(equalTo: logoApp.bottomAnchor, constant: 40),
+            buttonStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            buttonStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
         ])
     }
 
     private func showLogin() {
-        print("Login Button pressed")
+        delegate?.goToLoginVC()
     }
-    
+
     private func showRegister() {
-        print("Register Button pressed")
+        delegate?.goToRegister()
     }
 }
 
