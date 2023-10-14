@@ -12,64 +12,54 @@ protocol WelcomeViewDelegate: AnyObject {
     func goToRegister()
 }
 
+//MARK: - Constants
+private enum Constants {
+    static let cornerRadius: CGFloat = 7
+    static let buttonSpacing: CGFloat = 25
+    static let fontSize: CGFloat = 20
+}
+
 final class WelcomeView: UIView {
 
     weak var delegate: WelcomeViewDelegate?
 
+    //MARK: - UI Components
     private lazy var logoApp: UIImageView = {
         let logoApp = UIImageView()
-        logoApp.image = UIImage(named: "logo")
+        logoApp.image = UIImage.logo
         logoApp.translatesAutoresizingMaskIntoConstraints = false
         return logoApp
     }()
 
-    private lazy var loginButton: CustomButton = {
-        let button = CustomButton(
-            backgroundColor:  UIColor.adjSecondary,
-            title: "Login",
-            font: UIFont.boldSystemFont(ofSize: 20),
-            titleColor: UIColor.adjSecondaryText,
-            borderWidth: 0,
-            cornerRadious: 7,
-            action: UIAction(handler: { [weak self] _ in
-                self?.showLogin()
-            }))
-        return button
-    }()
+    private lazy var loginButton = createButton(title: "Login", actionHandler: { [weak self] _ in self?.delegate?.goToLoginVC() })
 
-    private lazy var registerButton: CustomButton = {
-        let button = CustomButton(
-            backgroundColor: UIColor.adjSecondary,
-            title: "Register",
-            font: UIFont.boldSystemFont(ofSize: 20),
-            titleColor: UIColor.adjSecondaryText,
-            borderWidth: 0,
-            cornerRadious: 7,
-            action: UIAction(handler: { [weak self] _ in
-                self?.showRegister()
-            }))
-        return button
-    }()
+    private lazy var registerButton = createButton(title: "Register", actionHandler: { [weak self] _ in self?.delegate?.goToRegister() })
 
     private lazy var buttonStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [loginButton, registerButton])
         stackView.axis = .vertical
-        stackView.spacing = 25
+        stackView.spacing = Constants.buttonSpacing
         stackView.alignment = .fill
-        stackView.distribution = .fill
+        stackView.distribution = .fillEqually
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
 
+    //MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
         backgroundColor = UIColor.adjWhiteBlack
         setup()
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
     }
+}
+
+//MARK: - Private Methods
+extension WelcomeView {
 
     private func setup() {
         addSubviews()
@@ -97,12 +87,14 @@ final class WelcomeView: UIView {
         ])
     }
 
-    private func showLogin() {
-        delegate?.goToLoginVC()
-    }
-
-    private func showRegister() {
-        delegate?.goToRegister()
+    private func createButton(title: String, actionHandler: @escaping (UIAction) -> Void) -> CustomButton {
+        return CustomButton(
+            backgroundColor: UIColor.adjSecondary,
+            title: title,
+            font: UIFont.boldSystemFont(ofSize: Constants.fontSize),
+            titleColor: UIColor.adjSecondaryText,
+            cornerRadious: Constants.cornerRadius,
+            action: UIAction(handler: actionHandler)
+        )
     }
 }
-
