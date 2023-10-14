@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  WelcomeViewController.swift
 //  Share-Bills
 //
 //  Created by Jesús Armando Cáceres Vilchez on 11/10/23.
