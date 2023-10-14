@@ -16,12 +16,12 @@ protocol WelcomeViewDelegate: AnyObject {
 private enum Constants {
     static let cornerRadius: CGFloat = 7
     static let buttonSpacing: CGFloat = 25
-    static let fontSize: CGFloat = 20
+    static let fontSize: CGFloat = 30
 }
 
 final class WelcomeView: UIView {
 
-    weak var delegate: WelcomeViewDelegate?
+    weak var delegate: NavigationDelegate?
 
     //MARK: - UI Components
     private lazy var logoApp: UIImageView = {
@@ -31,9 +31,9 @@ final class WelcomeView: UIView {
         return logoApp
     }()
 
-    private lazy var loginButton = createButton(title: "Login", actionHandler: { [weak self] _ in self?.delegate?.goToLoginVC() })
+    private lazy var loginButton = createButton(title: "Login", backgroundColor: UIColor.adjSecondary, vc: LoginViewController())
 
-    private lazy var registerButton = createButton(title: "Register", actionHandler: { [weak self] _ in self?.delegate?.goToRegister() })
+    private lazy var registerButton = createButton(title: "Register", backgroundColor: UIColor.adjPrimary, vc: RegisterViewController())
 
     private lazy var buttonStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [loginButton, registerButton])
@@ -87,14 +87,14 @@ extension WelcomeView {
         ])
     }
 
-    private func createButton(title: String, actionHandler: @escaping (UIAction) -> Void) -> CustomButton {
+    private func createButton(title: String, backgroundColor: UIColor,vc: UIViewController) -> CustomButton {
         return CustomButton(
-            backgroundColor: UIColor.adjSecondary,
             title: title,
             font: UIFont.boldSystemFont(ofSize: Constants.fontSize),
             titleColor: UIColor.adjSecondaryText,
+            backgroundColor: backgroundColor,
             cornerRadious: Constants.cornerRadius,
-            action: UIAction(handler: actionHandler)
+            action: UIAction(handler: { [weak self] _ in self?.delegate?.navigateTo(vc) })
         )
     }
 }
