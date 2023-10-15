@@ -31,9 +31,9 @@ final class WelcomeView: UIView {
         return logoApp
     }()
 
-    private lazy var loginButton = createButton(title: "Login", backgroundColor: UIColor.adjSecondary, vc: LoginViewController())
+    private lazy var loginButton = createButton(title: "Login".localized, backgroundColor: UIColor.adjSecondary, vc: LoginViewController())
 
-    private lazy var registerButton = createButton(title: "Register", backgroundColor: UIColor.adjPrimary, vc: RegisterViewController())
+    private lazy var registerButton = createButton(title: "Register".localized, backgroundColor: UIColor.adjPrimary, vc: RegisterViewController())
 
     private lazy var buttonStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [loginButton, registerButton])
@@ -78,12 +78,9 @@ extension WelcomeView {
             logoApp.centerXAnchor.constraint(equalTo: centerXAnchor),
             logoApp.topAnchor.constraint(equalTo: topAnchor, constant: 150),
 
-            loginButton.heightAnchor.constraint(equalToConstant: 70),
-            registerButton.heightAnchor.constraint(equalToConstant: 70),
-
             buttonStackView.topAnchor.constraint(equalTo: logoApp.bottomAnchor, constant: 40),
-            buttonStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
-            buttonStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            buttonStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            buttonStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
     }
 
