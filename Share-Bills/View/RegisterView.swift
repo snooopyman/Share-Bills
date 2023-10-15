@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 //MARK: - Constants
 private enum Constants {
     static let cornerRadius: CGFloat = 20
