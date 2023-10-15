@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  Share-Bills
+
+  Created by Jesús Armando Cáceres Vilchez on 12/10/23.
+  
+*/
+"Login" = "Iniciar sesión";
+"Register" = "Crear cuenta";

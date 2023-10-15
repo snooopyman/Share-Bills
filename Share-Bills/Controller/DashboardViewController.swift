@@ -9,8 +9,13 @@ import UIKit
 
 class DashboardViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .purple
+    override func loadView() {
+        let dashboardView = DashboardView()
+        self.view = dashboardView
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
 }
