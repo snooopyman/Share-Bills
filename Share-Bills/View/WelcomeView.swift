@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol WelcomeViewDelegate: AnyObject {
-    func goToLoginVC()
-    func goToRegister()
-}
 
 //MARK: - Constants
 private enum Constants {
