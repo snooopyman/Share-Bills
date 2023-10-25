@@ -9,12 +9,14 @@ import UIKit
 
 class LoginViewController: UIViewController, NavigationDelegate {
 
+    //MARK: View lifecycle
     override func loadView() {
         let loginView = LoginView()
         loginView.delegate = self
         self.view = loginView
     }
 
+    //MARK: - NavigationDelegate methods
     func navigateTo(_ vc: UIViewController) {
         navigationController?.pushViewController(vc, animated: true)
     }

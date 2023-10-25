@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 //MARK: - Constants
 private enum Constants {
     static let cornerRadius: CGFloat = 20
@@ -43,9 +42,8 @@ final class LoginView: UIView {
         setup()
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
