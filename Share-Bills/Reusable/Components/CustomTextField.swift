@@ -14,8 +14,7 @@ class CustomTextField: UITextField {
     }
 
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        configure()
+        fatalError("init(coder:) has not been implemented.")
     }
 
     public convenience init(text: String, placeholder: String, isPassword: Bool = false, font: UIFont, backgroundColor: UIColor, borderWidth: CGFloat? = nil, borderColor: UIColor, cornerRadius: CGFloat? = nil) {

@@ -14,11 +14,10 @@ class CustomLabel: UILabel {
     }
 
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        configure()
+        fatalError("init(coder:) has not been implemented.")
     }
 
-    public convenience init(text: String, textColor: UIColor, font: UIFont) {
+    public convenience init(text: String, textColor: UIColor, font: UIFont? = nil) {
         self.init()
         self.text = text
         self.textColor = textColor
