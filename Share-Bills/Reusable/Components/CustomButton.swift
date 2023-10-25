@@ -14,11 +14,10 @@ class CustomButton: UIButton {
     }
 
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        configure()
+        fatalError("init(coder:) has not been implemented.")
     }
 
-    public convenience init(title: String, font: UIFont?, titleColor: UIColor?,backgroundColor: UIColor?, borderWidth: CGFloat? = nil, cornerRadious: CGFloat? = nil, action: UIAction) {
+    public convenience init(title: String, font: UIFont?, titleColor: UIColor?,backgroundColor: UIColor?, borderWidth: CGFloat? = nil, borderColor: CGColor? = nil, cornerRadious: CGFloat? = nil, action: UIAction) {
         self.init(type: .system)
         self.setTitle(title, for: .normal)
         self.titleLabel?.font = font
@@ -27,6 +26,7 @@ class CustomButton: UIButton {
         if let borderWidth = borderWidth, borderWidth > 0 {
             self.layer.borderWidth = borderWidth
         }
+        self.layer.borderColor = borderColor
         if let cornerRadius = cornerRadious, cornerRadius > 0 {
             self.layer.cornerRadius = cornerRadius
         }

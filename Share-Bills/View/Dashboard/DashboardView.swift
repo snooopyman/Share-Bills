@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 final class DashboardView: UIView {
 
     weak var delegate: NavigationDelegate?
@@ -22,9 +21,8 @@ final class DashboardView: UIView {
         setup()
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
