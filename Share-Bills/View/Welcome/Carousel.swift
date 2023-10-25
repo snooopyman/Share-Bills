@@ -23,9 +23,9 @@ class Carousel: UIView {
     )
 
     //MARK: - Initializers
-    public init(frame: CGRect, items: [CarouselItem]) {
+    public init(items: [CarouselItem]) {
         self.items = items
-        super.init(frame: frame)
+        super.init(frame: .zero)
         setupView()
     }
 

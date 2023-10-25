@@ -7,26 +7,26 @@
 
 import UIKit
 
+enum WelcomeButtonTitle {
+    static let register = "Register"
+    static let login = "Login"
+}
+
 class WelcomeView: UIView {
     weak var delegate: NavigationDelegate?
 
     //MARK: - UI Components
     lazy var carousel: Carousel = {
-        let items = [
-            createCarouselItem(imageName: "cool", title: "Cool", description: "Descripción Cool"),
-            createCarouselItem(imageName: "relax", title: "Relax", description: "Descripción Relax"),
-            createCarouselItem(imageName: "sit", title: "Sit", description: "Descripción Sit"),
-            createCarouselItem(imageName: "stand", title: "Stand", description: "Descripción Stand")
-        ].compactMap { $0 }
+        let items = CarouselItemFactory.createItems()
+        let carousel = Carousel(items: items)
 
-        let carousel = Carousel(frame: .zero, items: items)
         carousel.setupPageControl(pageControl)
         carousel.translatesAutoresizingMaskIntoConstraints = false
         return carousel
     }()
 
-    private lazy var registerButton = createButton(title: "Register", vc: RegisterViewController())
-    private lazy var loginButton = createButton(title: "Login", vc: LoginViewController())
+    private lazy var registerButton = createButton(title: WelcomeButtonTitle.register, goToVC: RegisterViewController())
+    private lazy var loginButton = createButton(title: WelcomeButtonTitle.login, goToVC: LoginViewController())
 
     private let pageControl: UIPageControl = {
         let pageControl = UIPageControl()
@@ -83,23 +83,15 @@ private extension WelcomeView {
             loginButton.widthAnchor.constraint(equalToConstant: 150),
         ])
     }
-    
-    func createCarouselItem(imageName: String, title: String, description: String) -> CarouselItem? {
-        guard let image = UIImage(named: imageName) else {
-            print("No se pudo encontrar la imagen \(imageName)")
-            return nil
-        }
-        return CarouselItem(image: image, title: title, description: description)
-    }
 
-    func createButton(title: String, vc: UIViewController) -> CustomButton {
+    func createButton(title: String, goToVC: UIViewController) -> CustomButton {
         return CustomButton(
             title: title,
             font: UIFont.systemFont(ofSize: 20),
             titleColor: UIColor.adjSecondaryText,
             backgroundColor: UIColor.adjSecondary,
             cornerRadious: 20,
-            action: UIAction(handler: { [weak self] _ in self?.delegate?.navigateTo(vc) })
+            action: UIAction(handler: { [weak self] _ in self?.delegate?.navigateTo(goToVC) })
         )
     }
 }
