@@ -31,6 +31,7 @@
 		2ABCEF4D2AE9226C00FB4763 /* CarouselItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCEF492AE9226C00FB4763 /* CarouselItemCell.swift */; };
 		2ABCEF4E2AE9226C00FB4763 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCEF4A2AE9226C00FB4763 /* WelcomeView.swift */; };
 		2ABCEF4F2AE9226C00FB4763 /* Carousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCEF4B2AE9226C00FB4763 /* Carousel.swift */; };
+		2ABCEF512AE9293300FB4763 /* CarouselItemFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABCEF502AE9293300FB4763 /* CarouselItemFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		2ABCEF492AE9226C00FB4763 /* CarouselItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselItemCell.swift; sourceTree = "<group>"; };
 		2ABCEF4A2AE9226C00FB4763 /* WelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		2ABCEF4B2AE9226C00FB4763 /* Carousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Carousel.swift; sourceTree = "<group>"; };
+		2ABCEF502AE9293300FB4763 /* CarouselItemFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselItemFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				2ABCEF1C2AE9216600FB4763 /* CarouselItem.swift */,
+				2ABCEF502AE9293300FB4763 /* CarouselItemFactory.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				2A56A3F92ADB2C0100C704FF /* DashboardViewController.swift in Sources */,
 				2A0E235B2ADC39B40024B30D /* stringLocalize.swift in Sources */,
 				2A56A3FD2ADB46CB00C704FF /* RegisterViewController.swift in Sources */,
+				2ABCEF512AE9293300FB4763 /* CarouselItemFactory.swift in Sources */,
 				2ABCEF3D2AE9223600FB4763 /* DashboardView.swift in Sources */,
 				2ABCEF4E2AE9226C00FB4763 /* WelcomeView.swift in Sources */,
 			);
