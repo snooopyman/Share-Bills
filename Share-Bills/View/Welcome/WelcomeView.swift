@@ -87,7 +87,7 @@ private extension WelcomeView {
     func createButton(title: String, goToVC: UIViewController) -> CustomButton {
         return CustomButton(
             title: title,
-            font: UIFont.systemFont(ofSize: 20),
+            font: UIFont.boldSystemFont(ofSize: 20),
             titleColor: UIColor.adjSecondaryText,
             backgroundColor: UIColor.adjSecondary,
             cornerRadious: 20,
