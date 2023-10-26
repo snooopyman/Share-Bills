@@ -11,8 +11,13 @@ import UIKit
 private enum Constants {
     static let cornerRadius: CGFloat = 20
     static let textFieldSpacing: CGFloat = 25
-    static let fontSize: CGFloat = 30
+    static let fontSize: CGFloat = 20
     static let borderWidth: CGFloat = 2
+    static let titleLabel: String = "Join us"
+    static let email: String = "email"
+    static let password: String = "password"
+    static let repeatPassword: String = "Repeat password"
+    static let registerButton: String = "Sign up"
 }
 
 final class RegisterView: UIView {
@@ -20,14 +25,15 @@ final class RegisterView: UIView {
     weak var delegate: NavigationDelegate?
 
     //MARK: - UI Components
-    private lazy var title = createLabel(text: "Register")
-    private lazy var userNameTextField = createTextField(text: "", placeholder: "username")
-    private lazy var passwordTextField = createTextField(text: "", placeholder: "password", isPassword: true)
-    private lazy var repeatPasswordTextField = createTextField(text: "", placeholder: "Repeat password", isPassword: true)
-    private lazy var registerButton = createButton(title: "Register", vc: DashboardViewController())
+    private lazy var title = createLabel(text: Constants.titleLabel)
+    private lazy var emailTextField = createTextField(text: "", placeholder: Constants.email)
+    private lazy var passwordTextField = createTextField(text: "", placeholder: Constants.password, isPassword: true)
+    private lazy var repeatPasswordTextField = createTextField(text: "", placeholder: Constants.repeatPassword, isPassword: true)
+    private lazy var registerButton = createButton(title: Constants.registerButton, goToVC: DashboardViewController())
+    private lazy var termsAndPrivacyLabel = createTermsAndPrivacyLabel()
 
     private lazy var textFieldStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [userNameTextField, passwordTextField, repeatPasswordTextField])
+        let stackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, repeatPasswordTextField])
         stackView.axis = .vertical
         stackView.spacing = Constants.textFieldSpacing
         stackView.alignment = .fill
@@ -60,36 +66,40 @@ extension RegisterView {
         addSubview(title)
         addSubview(textFieldStackView)
         addSubview(registerButton)
+        addSubview(termsAndPrivacyLabel)
     }
 
     private func configureConstraints() {
         NSLayoutConstraint.activate([
-            title.heightAnchor.constraint(equalToConstant: 160),
-            title.widthAnchor.constraint(equalToConstant: 170),
             title.centerXAnchor.constraint(equalTo: centerXAnchor),
-            title.topAnchor.constraint(equalTo: topAnchor, constant: 80),
+            title.topAnchor.constraint(equalTo: topAnchor, constant: 120),
 
-            userNameTextField.heightAnchor.constraint(equalToConstant: 60),
-            userNameTextField.widthAnchor.constraint(equalToConstant: 240),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 60),
+            emailTextField.heightAnchor.constraint(equalToConstant: 50),
+            emailTextField.widthAnchor.constraint(equalToConstant: 240),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 50),
             passwordTextField.widthAnchor.constraint(equalToConstant: 240),
-            repeatPasswordTextField.heightAnchor.constraint(equalToConstant: 60),
+            repeatPasswordTextField.heightAnchor.constraint(equalToConstant: 50),
             repeatPasswordTextField.widthAnchor.constraint(equalToConstant: 240),
-            textFieldStackView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 10),
+            textFieldStackView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 40),
             textFieldStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
 
-            registerButton.heightAnchor.constraint(equalToConstant: 90),
-            registerButton.widthAnchor.constraint(equalToConstant: 250),
+
             registerButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            registerButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 35)
+            registerButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 25),
+            registerButton.heightAnchor.constraint(equalToConstant: 50),
+            registerButton.widthAnchor.constraint(equalToConstant: 270),
+
+            termsAndPrivacyLabel.leadingAnchor.constraint(equalTo: registerButton.leadingAnchor),
+            termsAndPrivacyLabel.trailingAnchor.constraint(equalTo: registerButton.trailingAnchor),
+            termsAndPrivacyLabel.topAnchor.constraint(equalTo: registerButton.bottomAnchor, constant: 10),
         ])
     }
 
     private func createLabel(text: String) -> CustomLabel {
         return CustomLabel(
             text: text,
-            textColor: UIColor.adjSecondary,
-            font: UIFont.boldSystemFont(ofSize: 65)
+            textColor: UIColor.adjBlackWhite,
+            font: UIFont.boldSystemFont(ofSize: 40)
         )
     }
 
@@ -101,20 +111,57 @@ extension RegisterView {
             font: UIFont.systemFont(ofSize: Constants.fontSize),
             backgroundColor: UIColor.adjWhiteBlack,
             borderWidth: Constants.borderWidth,
-            borderColor: UIColor.adjSecondary,
+            borderColor: UIColor.adjBlackWhite,
             cornerRadius: Constants.cornerRadius
         )
     }
     
-    private func createButton(title: String, vc: UIViewController) -> CustomButton {
+    func createButton(title: String, goToVC: UIViewController) -> CustomButton {
         return CustomButton(
             title: title,
-            font: UIFont.boldSystemFont(ofSize: Constants.fontSize),
+            font: UIFont.boldSystemFont(ofSize: 20),
             titleColor: UIColor.adjSecondaryText,
             backgroundColor: UIColor.adjSecondary,
-            cornerRadious: Constants.cornerRadius,
-            action: UIAction(handler: { [weak self] _ in self?.delegate?.navigateTo(vc) })
+            cornerRadious: 20,
+            action: UIAction(handler: { [weak self] _ in self?.delegate?.navigateTo(goToVC) })
         )
+    }
+
+    private func createTermsAndPrivacyLabel() -> UITextView {
+        let textView = UITextView()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.isEditable = false
+        textView.isScrollEnabled = false
+        textView.isUserInteractionEnabled = true
+        textView.textAlignment = .center
+
+        let attributedString = NSMutableAttributedString(string: "By signing up or signing in, you agree to our ", attributes: [.foregroundColor: UIColor.adjSecondaryText])
+
+        let termsAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.blue,
+            .link: URL(string: "https://github.com/snooopyman")!
+        ]
+        let termsAttributedString = NSAttributedString(string: "Terms of Use", attributes: termsAttributes)
+
+        attributedString.append(termsAttributedString)
+
+        attributedString.append(NSAttributedString(string: " and ", attributes: [.foregroundColor: UIColor.adjSecondaryText]))
+
+        let privacyAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.blue,
+            .link: URL(string: "https://github.com/snooopyman?tab=repositories")!
+        ]
+        let privacyAttributedString = NSAttributedString(string: "Privacy Policy", attributes: privacyAttributes)
+
+        attributedString.append(privacyAttributedString)
+
+        textView.attributedText = attributedString
+        textView.linkTextAttributes = [
+            .foregroundColor: UIColor.blue,
+            .underlineStyle: NSUnderlineStyle.single.rawValue,
+        ]
+
+        return textView
     }
 }
 
