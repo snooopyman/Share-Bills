@@ -25,7 +25,7 @@ private enum LoginViewText {
 
 final class LoginView: UIViewController {
     //MARK: - Properties
-    private let loginViewModel = LoginViewModel(apiClient: APIClient())
+    private let loginViewModel = LoginViewModel(apiClient: FirebaseAPIClient())
     private var cancellables = Set<AnyCancellable>()
     weak var delegate: NavigationDelegate?
 

@@ -18,10 +18,10 @@ final class LoginViewModel {
     @Published var userModel: User?
 
     var cancellables = Set<AnyCancellable>()
-    let apiClient: APIClient
+    let apiClient: FirebaseAPIClient
 
     //MARK: - Initialization
-    init(apiClient: APIClient) {
+    init(apiClient: FirebaseAPIClient) {
         self.apiClient = apiClient
         formValidation()
     }
@@ -44,9 +44,9 @@ final class LoginViewModel {
         showLoading = true
         Task {
             do {
-                userModel = try await apiClient.register(withEmail: email, password: password)
-            } catch let error as BackendError {
-                errorMessage = error.rawValue
+                userModel = try await apiClient.login(withEmail: email, password: password)
+            } catch let error as NSError {
+                errorMessage = error.localizedDescription
             }
             showLoading = false
         }
