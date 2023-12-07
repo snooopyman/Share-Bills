@@ -88,13 +88,6 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
-		2A5B748F2B120D870041AEA7 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		2A5B74902B120DD20041AEA7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +117,6 @@
 		2A9510852AD6E41B00EBBA5C /* Share-Bills */ = {
 			isa = PBXGroup;
 			children = (
-				2A5B748F2B120D870041AEA7 /* New Group */,
 				2A9510882AD6E41B00EBBA5C /* SceneDelegate.swift */,
 				2A9510862AD6E41B00EBBA5C /* AppDelegate.swift */,
 				2A9510CF2AD86A3E00EBBA5C /* Reusable */,

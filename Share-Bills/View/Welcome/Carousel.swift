@@ -41,6 +41,7 @@ class Carousel: UIView {
     func setupPageControl(_ pageControl: UIPageControl) {
         self.pageControl = pageControl
         pageControl.numberOfPages = welcomeViewModel.carouselItems.count
+        addSubview(pageControl)
     }
 }
 
