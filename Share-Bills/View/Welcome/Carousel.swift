@@ -6,25 +6,30 @@
 //
 
 import UIKit
+import Combine
 
 class Carousel: UIView {
 
     //MARK: - Properties
-    var items: [CarouselItem] {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
+    private var welcomeViewModel: WelcomeViewModel
+    private var cancellables = Set<AnyCancellable>()
     private var pageControl: UIPageControl?
 
-    private lazy var collectionView = UICollectionView(
-        frame: .zero,
-        collectionViewLayout: CarouselLayout()
-    )
+    private lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: CarouselLayout())
+        collectionView.backgroundColor = UIColor.clear
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.isPagingEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(CarouselItemCell.self, forCellWithReuseIdentifier: "cell")
+        return collectionView
+    }()
 
     //MARK: - Initializers
-    public init(items: [CarouselItem]) {
-        self.items = items
+    public init(viewModel: WelcomeViewModel) {
+        self.welcomeViewModel = viewModel
         super.init(frame: .zero)
         setupView()
     }
@@ -35,23 +40,14 @@ class Carousel: UIView {
 
     func setupPageControl(_ pageControl: UIPageControl) {
         self.pageControl = pageControl
-        pageControl.numberOfPages = items.count
+        pageControl.numberOfPages = welcomeViewModel.carouselItems.count
     }
 }
 
 //MARK: - Private methods
 private extension Carousel {
     func setupView() {
-        collectionView.backgroundColor = UIColor.clear
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.isPagingEnabled = true
-        collectionView.showsHorizontalScrollIndicator = false
-
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(collectionView)
-
-        collectionView.register(CarouselItemCell.self, forCellWithReuseIdentifier: "cell")
 
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: topAnchor),
@@ -59,6 +55,12 @@ private extension Carousel {
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor)
         ])
+
+        welcomeViewModel.$carouselItems
+            .sink { [weak self] _ in
+                self?.collectionView.reloadData()
+            }
+            .store(in: &cancellables)
     }
 }
 
@@ -66,17 +68,17 @@ private extension Carousel {
 extension Carousel: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return welcomeViewModel.carouselItems.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CarouselItemCell
 
-        let item = items[indexPath.row]
+        let item = welcomeViewModel.carouselItems[indexPath.row]
         cell.imageView.image = item.image
         cell.titleLabel.text = item.title
         cell.descriptionLabel.text = item.description
-        
+
         return cell
     }
 }
