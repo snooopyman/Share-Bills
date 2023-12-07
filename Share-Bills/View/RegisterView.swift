@@ -23,7 +23,7 @@ private enum Constants {
 
 final class RegisterView: UIViewController {
     //MARK: - Properties
-    private let registerViewModel = RegisterViewModel(apiClient: APIClient())
+    private let registerViewModel = RegisterViewModel(apiClient: FirebaseAPIClient())
     private var cancellables = Set<AnyCancellable>()
     weak var delegate: NavigationDelegate?
 

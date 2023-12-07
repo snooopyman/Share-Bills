@@ -18,10 +18,10 @@ final class RegisterViewModel {
     @Published var userModel: User?
 
     var cancellables = Set<AnyCancellable>()
-    let apiClient: APIClient
+    let apiClient: FirebaseAPIClient
 
     //MARK: - Initialization
-    init(apiClient: APIClient) {
+    init(apiClient: FirebaseAPIClient) {
         self.apiClient = apiClient
         formValidation()
     }
