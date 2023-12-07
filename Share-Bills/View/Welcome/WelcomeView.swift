@@ -57,6 +57,7 @@ private extension WelcomeView {
         view.backgroundColor = .adjWhiteBlack
         addSubviews()
         setupConstraints()
+        carousel.setupPageControl(pageControl)
     }
 
     func addSubviews() {
