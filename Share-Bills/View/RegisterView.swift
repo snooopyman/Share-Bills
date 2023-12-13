@@ -17,7 +17,7 @@ private enum Constants {
     static let titleLabel: String = "Join us"
     static let email: String = "email"
     static let password: String = "password"
-    static let repeatPassword: String = "Repeat password"
+    static let repeatPassword: String = "repeat password"
     static let registerButton: String = "Sign up"
 }
 
@@ -34,17 +34,17 @@ final class RegisterView: UIViewController {
     }
 
     //MARK: - UI Components
-    private lazy var titleLabel = createLabel(text: Constants.titleLabel)
-    private lazy var emailTextField = createTextField(text: "", placeholder: Constants.email)
-    private lazy var passwordTextField = createTextField(text: "", placeholder: Constants.password, isPassword: true)
-    private lazy var repeatPasswordTextField = createTextField(text: "", placeholder: Constants.repeatPassword, isPassword: true)
+    private lazy var errorLabel = createErrorLabel(text: "")
+    private lazy var titleLabel = createLabel(text: Constants.titleLabel.localized)
+    private lazy var emailTextField = createTextField(text: "", placeholder: Constants.email.localized)
+    private lazy var passwordTextField = createTextField(text: "", placeholder: Constants.password.localized, isPassword: true)
+    private lazy var repeatPasswordTextField = createTextField(text: "", placeholder: Constants.repeatPassword.localized, isPassword: true)
     private lazy var registerButton: CustomButton = {
-        CustomButton(title: Constants.registerButton, filled: true) {
+        CustomButton(title: Constants.registerButton.localized, filled: true) {
             self.startRegister()
         }
     }()
     private lazy var termsAndPrivacyLabel = createTermsAndPrivacyLabel()
-    private lazy var errorLabel = createLabel(text: "")
 
     private lazy var textFieldStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, repeatPasswordTextField])
@@ -104,6 +104,13 @@ private extension RegisterView {
         }
     }
 
+    func createErrorLabel(text: String) -> CustomLabel {
+        CustomLabel(
+            text: text,
+            textColor: .red,
+            font: UIFont.boldSystemFont(ofSize: 15)
+        )
+    }
 
     func createLabel(text: String) -> CustomLabel {
         CustomLabel(
@@ -148,23 +155,23 @@ private extension RegisterView {
         textView.isUserInteractionEnabled = true
         textView.textAlignment = .center
 
-        let attributedString = NSMutableAttributedString(string: "By signing up or signing in, you agree to our ", attributes: [.foregroundColor: UIColor.adjSecondaryText])
+        let attributedString = NSMutableAttributedString(string: "By signing up or signing in, you agree to our ".localized, attributes: [.foregroundColor: UIColor.adjSecondaryText])
 
         let termsAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.blue,
             .link: URL(string: "https://github.com/snooopyman")!
         ]
-        let termsAttributedString = NSAttributedString(string: "Terms of Use", attributes: termsAttributes)
+        let termsAttributedString = NSAttributedString(string: "Terms of Use".localized, attributes: termsAttributes)
 
         attributedString.append(termsAttributedString)
 
-        attributedString.append(NSAttributedString(string: " and ", attributes: [.foregroundColor: UIColor.adjSecondaryText]))
+        attributedString.append(NSAttributedString(string: " and ".localized, attributes: [.foregroundColor: UIColor.adjSecondaryText]))
 
         let privacyAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.blue,
             .link: URL(string: "https://github.com/snooopyman?tab=repositories")!
         ]
-        let privacyAttributedString = NSAttributedString(string: "Privacy Policy", attributes: privacyAttributes)
+        let privacyAttributedString = NSAttributedString(string: "Privacy Policy".localized, attributes: privacyAttributes)
 
         attributedString.append(privacyAttributedString)
 

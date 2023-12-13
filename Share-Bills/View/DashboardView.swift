@@ -9,6 +9,7 @@ import UIKit
 
 class DashboardView: UIViewController {
 
+    //MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemPink

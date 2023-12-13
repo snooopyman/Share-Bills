@@ -30,11 +30,23 @@ final class RegisterViewModel {
     func formValidation() {
         Publishers.CombineLatest($email, $password)
             .map { email, password in
-                return email.count > 5 && password.count > 5
+                return self.isEmailValid(email) && self.isPasswordValid(password)
             }
             .sink { value in
                 self.isEnabled = value
             }.store(in: &cancellables)
+    }
+
+    private func isEmailValid(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: email)
+    }
+
+    private func isPasswordValid(_ password: String) -> Bool {
+        let passwordRegEx = "(?=.*[A-Z])(?=.*[0-9]).{6,}"
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
+        return passwordTest.evaluate(with: password)
     }
 
     //MARK: - User Register
@@ -46,7 +58,7 @@ final class RegisterViewModel {
             do {
                 userModel = try await apiClient.register(withEmail: email, password: password)
             } catch let error as BackendError {
-                errorMessage = error.rawValue
+                errorMessage = error.rawValue.localized
             }
             showLoading = false
         }

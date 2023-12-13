@@ -5,5 +5,32 @@
   Created by Jesús Armando Cáceres Vilchez on 12/10/23.
   
 */
+
+///Welcome
 "Login" = "Iniciar sesión";
 "Register" = "Crear cuenta";
+//Carousel
+"Cool" = "Genial";
+"Description Cool" = "Descripción Genial";
+"Relax" = "Relajarse";
+"Description Relax" = "Descripción Relajarse";
+"Sit" = "Sentarse";
+"Description Sit" = "Descripción Sentarse";
+"Stand" = "Levantarse";
+"Description Stand" = "Descripción Levantarse";
+
+//Register + Login
+"Join us" = "Únete";
+"Sign In" = "Ingresar";
+"email" = "email";
+"password" = "contraseña";
+"repeat password" = "repetir contraseña";
+"Sign up" = "Registrarse";
+"By signing up or signing in, you agree to our " = "Al registrarse o iniciar sesión, acepta nuestros ";
+"Terms of Use" = "Términos de uso";
+" and " = " y ";
+"Privacy Policy" = "Política de privacidad";
+
+//Errores
+"Check your email" = "Comprueba tu email";
+"Check your password" = "Comprueba tu contraseña";

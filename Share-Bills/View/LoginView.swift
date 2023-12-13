@@ -18,8 +18,8 @@ private enum LoginViewLayout {
 
 private enum LoginViewText {
     static let loginTitle = "Sign In"
-    static let emailPlaceholder = "Add email"
-    static let passwordPlaceholder = "Add password"
+    static let emailPlaceholder = "email"
+    static let passwordPlaceholder = "password"
     static let loginButtonTitle = "Login"
 }
 
@@ -36,12 +36,12 @@ final class LoginView: UIViewController {
     }
 
     //MARK: - UI Components
-    private lazy var errorLabel = createLabel(text: "")
-    private lazy var titleLabel = createLabel(text: LoginViewText.loginTitle)
-    private lazy var emailTextField = createTextField(text: "", placeholder: LoginViewText.emailPlaceholder)
-    private lazy var passwordTextField = createTextField(text: "", placeholder: LoginViewText.passwordPlaceholder, isPassword: true)
+    private lazy var errorLabel = createErrorLabel(text: "")
+    private lazy var titleLabel = createLabel(text: LoginViewText.loginTitle.localized)
+    private lazy var emailTextField = createTextField(text: "", placeholder: LoginViewText.emailPlaceholder.localized)
+    private lazy var passwordTextField = createTextField(text: "", placeholder: LoginViewText.passwordPlaceholder.localized, isPassword: true)
     private lazy var loginButton: CustomButton = {
-        CustomButton(title: LoginViewText.loginTitle, filled: true) {
+        CustomButton(title: LoginViewText.loginTitle.localized, filled: true) {
             self.startLogin()
         }
     }()
@@ -98,10 +98,18 @@ private extension LoginView {
         ])
     }
 
+    func createErrorLabel(text: String) -> CustomLabel {
+        CustomLabel(
+            text: text,
+            textColor: .red,
+            font: UIFont.boldSystemFont(ofSize: 15)
+        )
+    }
+    
     func createLabel(text: String) -> CustomLabel {
         CustomLabel(
             text: text,
-            textColor: UIColor.adjBlackWhite,
+            textColor: .adjBlackWhite,
             font: UIFont.boldSystemFont(ofSize: 40)
         )
     }
