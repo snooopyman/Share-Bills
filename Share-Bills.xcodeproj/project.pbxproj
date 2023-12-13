@@ -16,6 +16,7 @@
 		2A5B749A2B1210CA0041AEA7 /* FirebaseAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B74992B1210CA0041AEA7 /* FirebaseAPIClient.swift */; };
 		2A5B74AE2B1515230041AEA7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B74AD2B1515230041AEA7 /* User.swift */; };
 		2A5B74C22B1696190041AEA7 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5B74C12B1696190041AEA7 /* RegisterViewModel.swift */; };
+		2A6545532B2A2A2E00064FB7 /* BackendError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6545522B2A2A2E00064FB7 /* BackendError.swift */; };
 		2A9510872AD6E41B00EBBA5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9510862AD6E41B00EBBA5C /* AppDelegate.swift */; };
 		2A9510892AD6E41B00EBBA5C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9510882AD6E41B00EBBA5C /* SceneDelegate.swift */; };
 		2A9510902AD6E41D00EBBA5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A95108F2AD6E41D00EBBA5C /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		2A5B74992B1210CA0041AEA7 /* FirebaseAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPIClient.swift; sourceTree = "<group>"; };
 		2A5B74AD2B1515230041AEA7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2A5B74C12B1696190041AEA7 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		2A6545522B2A2A2E00064FB7 /* BackendError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendError.swift; sourceTree = "<group>"; };
 		2A9510832AD6E41B00EBBA5C /* Share-Bills.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Share-Bills.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A9510862AD6E41B00EBBA5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A9510882AD6E41B00EBBA5C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				2A5B74992B1210CA0041AEA7 /* FirebaseAPIClient.swift */,
 				2A5B74AD2B1515230041AEA7 /* User.swift */,
 				2ABCEF1C2AE9216600FB4763 /* CarouselItem.swift */,
+				2A6545522B2A2A2E00064FB7 /* BackendError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				2ABCEF3F2AE9223600FB4763 /* RegisterView.swift in Sources */,
 				2ABCEF4D2AE9226C00FB4763 /* CarouselItemCell.swift in Sources */,
 				2ABCEF2C2AE9221500FB4763 /* CustomTextField.swift in Sources */,
+				2A6545532B2A2A2E00064FB7 /* BackendError.swift in Sources */,
 				2A5B74C22B1696190041AEA7 /* RegisterViewModel.swift in Sources */,
 				2ABCEF4C2AE9226C00FB4763 /* CarouselLayout.swift in Sources */,
 				2A9510892AD6E41B00EBBA5C /* SceneDelegate.swift in Sources */,

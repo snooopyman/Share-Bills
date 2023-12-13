@@ -9,6 +9,7 @@ import UIKit
 import Combine
 
 final class WelcomeViewModel {
+    //MARK: - Properties
     @Published var carouselItems: [CarouselItem] = CarouselItemFactory.createItems()
     var registerButtonTapped = PassthroughSubject<Void, Never>()
     var loginButtonTapped = PassthroughSubject<Void, Never>()
