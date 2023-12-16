@@ -26,10 +26,10 @@ class WelcomeView: UIViewController {
         carousel.translatesAutoresizingMaskIntoConstraints = false
         return carousel
     }()
-    private lazy var registerButton = CustomButton(title: WelcomeTexts.register.localized, font: UIFont.systemFont(ofSize: 20), titleColor: .adjBlackWhite, backgroundColor: .adjSecondary, cornerRadious: 20, action: UIAction(handler: { [weak self] _ in
+    private lazy var registerButton = CustomButton(title: WelcomeTexts.register.localized, font: UIFont.systemFont(ofSize: 20), titleColor: .adjWhite, backgroundColor: .adjAccentBlue, cornerRadious: 20, action: UIAction(handler: { [weak self] _ in
         self?.welcomeViewModel.registerButtonTapped.send()
     }))
-    private lazy var loginButton = CustomButton(title: WelcomeTexts.login.localized, font: UIFont.systemFont(ofSize: 20), titleColor: .adjBlackWhite, backgroundColor: .adjSecondary, cornerRadious: 20, action: UIAction(handler: { [weak self] _ in
+    private lazy var loginButton = CustomButton(title: WelcomeTexts.login.localized, font: UIFont.systemFont(ofSize: 20), titleColor: .adjWhite, backgroundColor: .adjAccentBlue, cornerRadious: 20, action: UIAction(handler: { [weak self] _ in
         self?.welcomeViewModel.loginButtonTapped.send()
     }))
     private let pageControl: UIPageControl = {
@@ -37,8 +37,8 @@ class WelcomeView: UIViewController {
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         pageControl.isUserInteractionEnabled = false
         pageControl.currentPage = 0
-        pageControl.pageIndicatorTintColor = UIColor.adjBlackWhite
-        pageControl.currentPageIndicatorTintColor = UIColor.adjSecondary
+        pageControl.pageIndicatorTintColor = .adjBlackWhite
+        pageControl.currentPageIndicatorTintColor = .adjSecundaryElement
         return pageControl
     }()
 
@@ -54,7 +54,7 @@ private extension WelcomeView {
 
     private func setup() {
         createBindingViewModel()
-        view.backgroundColor = .adjWhiteBlack
+        view.backgroundColor = .adjBackground
         addSubviews()
         setupConstraints()
         carousel.setupPageControl(pageControl)

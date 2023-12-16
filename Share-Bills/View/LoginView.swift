@@ -60,7 +60,7 @@ final class LoginView: UIViewController {
 private extension LoginView {
 
     func setup() {
-        view.backgroundColor = UIColor.adjWhiteBlack
+        view.backgroundColor = .adjBackground
         createBindingViewModel()
         addSubviews()
         configureConstraints()
@@ -120,9 +120,9 @@ private extension LoginView {
             placeholder: placeholder,
             isPassword: isPassword,
             font: UIFont.systemFont(ofSize: LoginViewLayout.fontSize),
-            backgroundColor: UIColor.adjWhiteBlack,
+            backgroundColor: .adjBackground,
             borderWidth: LoginViewLayout.borderWidth,
-            borderColor: UIColor.adjBlackWhite,
+            borderColor: .adjPrimaryElement,
             cornerRadius: LoginViewLayout.cornerRadius
         )
     }

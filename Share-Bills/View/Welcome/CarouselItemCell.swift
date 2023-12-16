@@ -21,8 +21,8 @@ class CarouselItemCell: UICollectionViewCell {
     }
 
     let imageView: CustomImageView = CustomImageView(image: nil, contentMode: .scaleAspectFill, backgroundColor: .clear, cornerRadius: 8)
-    let titleLabel: CustomLabel = CustomLabel(text: "", textColor: UIColor.adjBlackWhite, font: UIFont.boldSystemFont(ofSize: 20))
-    let descriptionLabel: CustomLabel = CustomLabel(text: "", textColor: .gray, font: UIFont.systemFont(ofSize: 15))
+    let titleLabel: CustomLabel = CustomLabel(text: "", textColor: .adjBlackWhite, font: .boldSystemFont(ofSize: 20))
+    let descriptionLabel: CustomLabel = CustomLabel(text: "", textColor: .gray, font: .systemFont(ofSize: 15))
 
     //MARK: - Initializers
     override init(frame: CGRect) {
