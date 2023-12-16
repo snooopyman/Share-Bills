@@ -12,6 +12,7 @@ final class RegisterViewModel {
     //MARK: - Properties
     @Published var email = ""
     @Published var password = ""
+    @Published var repeatPassword = ""
     @Published var isEnabled = false
     @Published var showLoading = false
     @Published var errorMessage = ""
@@ -28,25 +29,28 @@ final class RegisterViewModel {
 
     //MARK: - Form Validation
     func formValidation() {
-        Publishers.CombineLatest($email, $password)
-            .map { email, password in
-                return self.isEmailValid(email) && self.isPasswordValid(password)
+        Publishers.CombineLatest3($email, $password, $repeatPassword)
+            .map { email, password, repeatPassword in
+                return self.isValidEmail(email) &&
+                self.isValidPassword(password) &&
+                password == repeatPassword
             }
-            .sink { value in
-                self.isEnabled = value
-            }.store(in: &cancellables)
+            .sink { [weak self] value in
+                self?.isEnabled = value
+            }
+            .store(in: &cancellables)
     }
-
-    private func isEmailValid(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluate(with: email)
+    
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Z0-9a-z.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES[c] %@", emailRegEx)
+        return emailPred.evaluate(with: email)
     }
-
-    private func isPasswordValid(_ password: String) -> Bool {
-        let passwordRegEx = "(?=.*[A-Z])(?=.*[0-9]).{6,}"
-        let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
-        return passwordTest.evaluate(with: password)
+    
+    func isValidPassword(_ password: String) -> Bool {
+        let passwordRegEx = "(?=.*[A-Z])(?=.*[0-9]).{6,12}"
+        let passwordPred = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
+        return passwordPred.evaluate(with: password)
     }
 
     //MARK: - User Register
