@@ -199,6 +199,10 @@ private extension RegisterView {
             .assign(to: \RegisterViewModel.password, on: registerViewModel)
             .store(in: &cancellables)
 
+        repeatPasswordTextField.textPublisher
+            .assign(to: \RegisterViewModel.repeatPassword, on: registerViewModel)
+            .store(in: &cancellables)
+
         registerViewModel.$isEnabled
             .assign(to: \.isEnabled, on: registerButton)
             .store(in: &cancellables)
