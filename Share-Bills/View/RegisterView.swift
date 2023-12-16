@@ -62,7 +62,7 @@ private extension RegisterView {
 
     func setup() {
         createBindingViewModel()
-        view.backgroundColor = UIColor.adjWhiteBlack
+        view.backgroundColor = .adjBackground
         addSubviews()
         configureConstraints()
     }
@@ -115,7 +115,7 @@ private extension RegisterView {
     func createLabel(text: String) -> CustomLabel {
         CustomLabel(
             text: text,
-            textColor: UIColor.adjBlackWhite,
+            textColor: .adjBlackWhite,
             font: UIFont.boldSystemFont(ofSize: 40)
         )
     }
@@ -125,10 +125,10 @@ private extension RegisterView {
             text: text,
             placeholder: placeholder,
             isPassword: isPassword,
-            font: UIFont.systemFont(ofSize: Constants.fontSize),
-            backgroundColor: UIColor.adjWhiteBlack,
+            font: .systemFont(ofSize: Constants.fontSize),
+            backgroundColor: .adjBackground,
             borderWidth: Constants.borderWidth,
-            borderColor: UIColor.adjBlackWhite,
+            borderColor: .adjPrimaryElement,
             cornerRadius: Constants.cornerRadius
         )
     }
@@ -137,8 +137,8 @@ private extension RegisterView {
         CustomButton(
             title: title,
             font: UIFont.boldSystemFont(ofSize: 20),
-            titleColor: UIColor.adjSecondaryText,
-            backgroundColor: UIColor.adjSecondary,
+            titleColor: .adjBlackWhite,
+            backgroundColor: .adjAccentBlue,
             cornerRadius: 20,
             filled: filled,
             action: { [weak self] in
@@ -154,21 +154,22 @@ private extension RegisterView {
         textView.isScrollEnabled = false
         textView.isUserInteractionEnabled = true
         textView.textAlignment = .center
+        textView.backgroundColor = .clear
 
-        let attributedString = NSMutableAttributedString(string: "By signing up or signing in, you agree to our ".localized, attributes: [.foregroundColor: UIColor.adjSecondaryText])
+        let attributedString = NSMutableAttributedString(string: "By signing up or signing in, you agree to our ".localized, attributes: [.foregroundColor: UIColor.adjSecundaryElement])
 
         let termsAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.blue,
+            .foregroundColor: UIColor.adjAccentBlue,
             .link: URL(string: "https://github.com/snooopyman")!
         ]
         let termsAttributedString = NSAttributedString(string: "Terms of Use".localized, attributes: termsAttributes)
 
         attributedString.append(termsAttributedString)
 
-        attributedString.append(NSAttributedString(string: " and ".localized, attributes: [.foregroundColor: UIColor.adjSecondaryText]))
+        attributedString.append(NSAttributedString(string: " and ".localized, attributes: [.foregroundColor: UIColor.adjSecundaryElement]))
 
         let privacyAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.blue,
+            .foregroundColor: UIColor.adjAccentBlue,
             .link: URL(string: "https://github.com/snooopyman?tab=repositories")!
         ]
         let privacyAttributedString = NSAttributedString(string: "Privacy Policy".localized, attributes: privacyAttributes)
@@ -177,7 +178,7 @@ private extension RegisterView {
 
         textView.attributedText = attributedString
         textView.linkTextAttributes = [
-            .foregroundColor: UIColor.blue,
+            .foregroundColor: UIColor.adjAccentBlue,
             .underlineStyle: NSUnderlineStyle.single.rawValue,
         ]
 
